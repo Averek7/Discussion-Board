@@ -61,7 +61,7 @@ exports.deleteDiscussion = async (req, res) => {
       return res.status(401).json({ msg: "User not authorized" });
     }
 
-    await Discussion.findByIdAndRemove(req.params.id);
+    await Discussion.findByIdAndDelete(req.params.id);
 
     res.json({ msg: "Discussion removed" });
   } catch (err) {

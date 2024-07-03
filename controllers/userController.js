@@ -126,7 +126,7 @@ exports.deleteUser = async (req, res) => {
       return res.status(401).json({ msg: "User not authorized" });
     }
 
-    await User.findByIdAndRemove(req.params.id);
+    await User.findByIdAndDelete(req.params.id);
 
     res.json({ msg: "User removed" });
   } catch (err) {
