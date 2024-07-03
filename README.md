@@ -88,3 +88,25 @@ Handles discussion posts and related operations.
   "followers": ["ObjectId (User)"],
   "following": ["ObjectId (User)"]
 }
+
+```
+### Discussion Schema
+
+```json
+{
+  "user": "ObjectId (User)",
+  "text": "String",
+  "image": "String",
+  "hashtags": ["String"],
+  "likes": ["ObjectId (User)"],
+  "comments": [
+    {
+      "user": "ObjectId (User)",
+      "text": "String",
+      "likes": ["ObjectId (User)"]
+    }
+  ],
+  "views": "Number",
+  "createdAt": "Date"
+}
+```
