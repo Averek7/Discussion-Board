@@ -99,16 +99,22 @@ Handles discussion posts and related operations.
   "image": "String",
   "hashtags": ["String"],
   "likes": ["ObjectId (User)"],
-  "comments": [
-    {
-      "user": "ObjectId (User)",
-      "text": "String",
-      "likes": ["ObjectId (User)"]
-    }
-  ],
+  "comments": ["ObjectId (Comment)"],
   "views": "Number",
   "createdAt": "Date"
 }
+```
+
+### Comment Schema
+
+```json
+{
+  "user": "ObjectId (User)",
+  "text": "String",
+  "likes": ["ObjectId (User)"],
+  "createdAt": "Date"
+}
+
 ```
 
 ## API Endpoints
@@ -139,9 +145,7 @@ Handles discussion posts and related operations.
 - **PUT /api/discussions/like/:id**: Like a discussion
 - **PUT /api/discussions/unlike/:id**: Unlike a discussion
 - **PUT /api/discussions/comment/like/:id/:comment_id**: Like a comment
-- **PUT /api/discussions/comment/unlike/:id/:comment
-
-_id**: Unlike a comment
+- **PUT /api/discussions/comment/unlike/:id/:comment_id**: Unlike a comment
 - **PUT /api/discussions/view/:id**: Increment view count
 
 ## Sequence
