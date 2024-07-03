@@ -30,7 +30,7 @@ router.put("/:id", auth, userController.updateUser);
 
 router.delete("/:id", auth, userController.deleteUser);
 
-router.get("/", auth, userController.getUsers);
+router.get("/", userController.getUsers);
 
 router.get("/search/:name", auth, userController.searchUsersByName);
 

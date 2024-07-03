@@ -1,7 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const { validationResult } = require("express-validator");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Signup User
@@ -124,7 +123,6 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-// Get List of Users
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -135,7 +133,6 @@ exports.getUsers = async (req, res) => {
   }
 };
 
-// Search Users by Name
 exports.searchUsersByName = async (req, res) => {
   try {
     const users = await User.find({
@@ -148,7 +145,6 @@ exports.searchUsersByName = async (req, res) => {
   }
 };
 
-// Follow User
 exports.followUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -175,7 +171,6 @@ exports.followUser = async (req, res) => {
   }
 };
 
-// Unfollow User
 exports.unfollowUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -206,7 +201,6 @@ exports.unfollowUser = async (req, res) => {
   }
 };
 
-// Get User Profile
 exports.getUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
