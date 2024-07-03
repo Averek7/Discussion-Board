@@ -23,9 +23,7 @@ This document provides a detailed low-level design for a system that handles use
 8. [Error Handling](#error-handling)
 9. [Testing](#testing)
 10. [Deployment](#deployment)
-11. [Implementation Plan](#implementation-plan)
-12. [Example Code Structure](#example-code-structure)
-13. [Submission Links](#submission-links)
+12. [Submission Links](#submission-links)
 
 ## Overview
 
@@ -200,3 +198,7 @@ Handles discussion posts and related operations.
 - **CI/CD**: Set up continuous integration and deployment pipelines.
 - **Hosting**: Deploy the services to a cloud platform like AWS, Azure, or Heroku.
 
+## Submission Links
+
+- **Postman Collection**: https://www.postman.com/supply-architect-92301278/workspace/spyne-task
+- **Deployed Link**: https://discussion-board-w07n.onrender.com
