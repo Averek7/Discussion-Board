@@ -38,6 +38,6 @@ router.put("/follow/:id", auth, userController.followUser);
 
 router.put("/unfollow/:id", auth, userController.unfollowUser);
 
-router.get("/:id", auth, userController.getUserProfile);
+router.get("/profile", auth, userController.getUserProfile);
 
 module.exports = router;
