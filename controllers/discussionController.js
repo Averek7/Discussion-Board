@@ -162,6 +162,43 @@ exports.deleteComment = async (req, res) => {
   }
 };
 
+exports.editComment = async (req, res) => {
+  try {
+    const discussion = await Discussion.findById(req.params.id);
+
+    if (!discussion) {
+      return res.status(404).json({ msg: "Discussion not found" });
+    }
+
+    let comment = discussion.comments.find(
+      (comment) => comment.id === req.params.comment_id
+    );
+
+    if (!comment) {
+      return res.status(404).json({ msg: "Comment not found" });
+    }
+
+    if (comment.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "User not authorized" });
+    }
+
+    comment = await Discussion.findOneAndUpdate(
+      { "comments._id": req.params.comment_id },
+      {
+        $set: {
+          "comments.$.text": req.body.text,
+        },
+      },
+      { new: true }
+    );
+
+    res.json(comment);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+}
+
 exports.likeDiscussion = async (req, res) => {
   try {
     const discussion = await Discussion.findById(req.params.id);

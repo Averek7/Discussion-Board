@@ -35,6 +35,8 @@ router.delete(
   discussionController.deleteComment
 );
 
+router.put("/comment/:id/:comment_id", auth, discussionController.editComment);
+
 router.put("/like/:id", auth, discussionController.likeDiscussion);
 
 router.put("/unlike/:id", auth, discussionController.unlikeDiscussion);
