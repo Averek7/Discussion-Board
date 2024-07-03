@@ -1,60 +1,60 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const CommentSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: "User",
   },
   text: {
     type: String,
-    required: true
+    required: true,
   },
   likes: [
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    }
+        ref: "User",
+      },
+    },
   ],
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 const DiscussionSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: "User",
   },
   text: {
     type: String,
-    required: true
+    required: true,
   },
   image: {
-    type: String
+    type: String,
   },
   hashtags: {
-    type: [String]
+    type: [String],
   },
   likes: [
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    }
+        ref: "User",
+      },
+    },
   ],
   comments: [CommentSchema],
   views: {
     type: Number,
-    default: 0
+    default: 0,
   },
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('Discussion', DiscussionSchema);
+module.exports = mongoose.model("Discussion", DiscussionSchema);
