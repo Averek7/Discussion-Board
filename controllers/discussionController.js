@@ -36,9 +36,13 @@ exports.updateDiscussion = async (req, res) => {
       return res.status(401).json({ msg: "User not authorized" });
     }
 
+    const formattedHashtags = Array.isArray(hashtags)
+      ? hashtags.map((tag) => tag.trim())
+      : hashtags?.split(",").map((tag) => tag.trim());
+
     discussion = await Discussion.findByIdAndUpdate(
       req.params.id,
-      { text, image, hashtags: hashtags.split(",").map((tag) => tag.trim()) },
+      { text, image, hashtags: formattedHashtags },
       { new: true }
     );
 
